@@ -1,0 +1,44 @@
+[
+  {
+    "category": "phishing",
+    "intents": [
+      "what is phishing",
+      "phishing",
+      "fake email",
+      "suspicious link"
+    ],
+    "response": "Phishing is a cyber attack where hackers trick users into revealing passwords, OTPs, or bank details using fake emails, websites, or messages."
+  },
+
+  {
+    "category": "password_security",
+    "intents": [
+      "how do hackers steal passwords",
+      "password hacking",
+      "stolen passwords",
+      "password attack"
+    ],
+    "response": "Hackers steal passwords using phishing pages, malware, keyloggers, weak passwords, and leaked databases. Use strong passwords and enable two-factor authentication."
+  },
+
+  {
+    "category": "malware",
+    "intents": [
+      "what is malware",
+      "virus",
+      "trojan",
+      "malicious software"
+    ],
+    "response": "Malware is harmful software designed to damage systems, steal data, or spy on users."
+  },
+
+  {
+    "category": "ransomware",
+    "intents": [
+      "what is ransomware",
+      "ransomware attack",
+      "encrypted files"
+    ],
+    "response": "Ransomware is malware that locks or encrypts files and demands payment to restore access."
+  }
+]

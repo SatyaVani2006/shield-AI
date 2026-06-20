@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SHIELD AI | Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/chatbot.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <div class="grid-overlay" aria-hidden="true"></div>
+  <div class="app-layout">
+    <aside class="sidebar glass" id="main-sidebar">
+      <div class="sidebar-brand">
+        <div class="logo-icon">SA</div>
+        <div>
+          <h1>SHIELD AI</h1>
+          <span>Cyber Assistant</span>
+        </div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="dashboard.html" class="active">💬 Chat</a></li>
+        <li><a href="faq.html">📚 FAQ Training</a></li>
+        <li><a href="settings.html">⚙️ Settings</a></li>
+      </ul>
+      <div class="sidebar-sessions-wrap">
+        <div class="sidebar-sessions-header">
+          <h3>Recent Chats</h3>
+          <button type="button" class="btn btn-ghost btn-sm" id="new-chat-btn" title="New Chat">+</button>
+        </div>
+        <div class="sidebar-sessions" id="session-list" aria-label="Chat history">
+          <!-- Session items will load here dynamically -->
+        </div>
+      </div>
+      <button type="button" class="btn btn-ghost" id="logout-btn" style="width:100%;margin-top:auto;">Logout</button>
+    </aside>
+    <main class="main-content">
+      <div class="chat-layout single-panel">
+        <section class="chat-panel glass" aria-label="Chat panel">
+          <header class="chat-header">
+            <div class="avatar-wrap">
+              <div class="chat-avatar" aria-hidden="true">AI</div>
+              <div>
+                <strong>SHIELD AI</strong>
+                <div class="chat-status">Ready</div>
+              </div>
+            </div>
+            <div class="chat-controls">
+              <select id="response-language" aria-label="Response language">
+                <option value="en">English</option>
+                <option value="hi">Hindi</option>
+                <option value="te">Telugu</option>
+                <option value="ta">Tamil</option>
+                <option value="fr">French</option>
+                <option value="es">Spanish</option>
+                <option value="de">German</option>
+              </select>
+              <select id="voice-gender" aria-label="Voice type">
+                <option value="female">Female voice</option>
+                <option value="male">Male voice</option>
+              </select>
+              <div class="voice-visualizer hidden" id="voice-viz" aria-hidden="true">
+                <span class="voice-bar"></span>
+                <span class="voice-bar"></span>
+                <span class="voice-bar"></span>
+                <span class="voice-bar"></span>
+                <span class="voice-bar"></span>
+              </div>
+              <button type="button" class="icon-btn" id="speak-btn" title="Read last reply" aria-label="Speak last response">🔊</button>
+            </div>
+          </header>
+          <div class="messages" id="messages" role="log" aria-live="polite">
+            <div class="welcome-screen" id="welcome-screen">
+              <div class="welcome-logo">🛡️</div>
+              <h2>How can I help you today?</h2>
+              <p class="welcome-subtitle">Ask SHIELD AI about security, threat analysis, phishing detection, password strength, and network vulnerabilities.</p>
+              
+              <div class="welcome-grid">
+                <button type="button" class="welcome-card" data-question="What is phishing and how do I avoid it?">
+                  <span class="card-icon">🎣</span>
+                  <div class="card-text">
+                    <h4>What is phishing?</h4>
+                    <p>Learn about social engineering and phishing emails</p>
+                  </div>
+                </button>
+                <button type="button" class="welcome-card" data-question="How do I create a strong password?">
+                  <span class="card-icon">🔑</span>
+                  <div class="card-text">
+                    <h4>Strong password tips</h4>
+                    <p>Best practices for strong passwords & MFA security</p>
+                  </div>
+                </button>
+                <button type="button" class="welcome-card" data-question="What should I do if I suspect malware on my device?">
+                  <span class="card-icon">🦠</span>
+                  <div class="card-text">
+                    <h4>Suspect malware?</h4>
+                    <p>Step-by-step actions for malware containment</p>
+                  </div>
+                </button>
+                <button type="button" class="welcome-card" data-question="How do I secure my home Wi-Fi network?">
+                  <span class="card-icon">📶</span>
+                  <div class="card-text">
+                    <h4>Secure home Wi-Fi</h4>
+                    <p>Configure WPA3, ssids, guest networks</p>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="chat-input-area">
+            <textarea id="chat-input" rows="1" placeholder="Ask a cybersecurity question..." aria-label="Message input"></textarea>
+            <button type="button" class="icon-btn" id="mic-btn" title="Voice input" aria-label="Start voice input">🎙️</button>
+            <button type="button" class="btn btn-primary" id="send-btn">Send</button>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+  <script src="js/app.js"></script>
+  <script src="js/translate.js"></script>
+  <script src="js/voice.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+</html>

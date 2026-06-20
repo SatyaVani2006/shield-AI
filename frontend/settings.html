@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SHIELD AI | Settings</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <div class="grid-overlay" aria-hidden="true"></div>
+  <div class="app-layout">
+    <aside class="sidebar glass" style="border-radius:0;border-top:none;border-bottom:none;border-left:none;">
+      <div class="sidebar-brand">
+        <div class="logo-icon">SA</div>
+        <div><h1>SHIELD AI</h1><span>Cyber Assistant</span></div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="dashboard.html">💬 Chat</a></li>
+        <li><a href="faq.html">📚 FAQ Training</a></li>
+        <li><a href="settings.html" class="active">⚙️ Settings</a></li>
+      </ul>
+      <button type="button" class="btn btn-ghost" id="logout-btn" style="width:100%;">Logout</button>
+    </aside>
+    <main class="main-content scrollable-content">
+      <header class="page-header">
+        <h2>Settings</h2>
+        <p>Manage your profile and language preferences.</p>
+      </header>
+      <div id="settings-alert" class="alert hidden"></div>
+      <div class="settings-panel glass">
+        <form id="settings-form">
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" id="settings-username" disabled />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="settings-email" disabled />
+          </div>
+          <div class="form-group">
+            <label for="settings-language">Preferred Response Language</label>
+            <select id="settings-language">
+              <option value="en">English</option>
+              <option value="hi">Hindi</option>
+              <option value="te">Telugu</option>
+              <option value="ta">Tamil</option>
+              <option value="fr">French</option>
+              <option value="es">Spanish</option>
+              <option value="de">German</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Save Settings</button>
+        </form>
+      </div>
+    </main>
+  </div>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      ShieldApp.requireAuth();
+      const user = ShieldApp.getUser();
+      if (user) {
+        document.getElementById('settings-username').value = user.username || '';
+        document.getElementById('settings-email').value = user.email || '';
+        document.getElementById('settings-language').value = user.preferredLanguage || 'en';
+      }
+      document.getElementById('settings-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const alert = document.getElementById('settings-alert');
+        try {
+          const preferredLanguage = document.getElementById('settings-language').value;
+          const data = await ShieldApp.api('/api/auth/settings', {
+            method: 'PATCH',
+            body: JSON.stringify({ preferredLanguage }),
+          });
+          ShieldApp.setUser(data.user);
+          alert.className = 'alert alert-success';
+          alert.textContent = 'Settings saved successfully.';
+          alert.classList.remove('hidden');
+        } catch (err) {
+          alert.className = 'alert alert-error';
+          alert.textContent = err.message;
+          alert.classList.remove('hidden');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

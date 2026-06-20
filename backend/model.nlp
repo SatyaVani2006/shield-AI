@@ -1,0 +1,1361 @@
+{
+  "settings": {
+    "languages": [
+      "en",
+      "hi",
+      "te",
+      "ta",
+      "fr",
+      "es",
+      "de"
+    ],
+    "autoSave": false,
+    "tag": "nlp",
+    "threshold": 0.5,
+    "autoLoad": true,
+    "modelFileName": "model.nlp",
+    "executeActionsBeforeAnswers": false,
+    "calculateSentiment": true
+  },
+  "nluManager": {
+    "settings": {
+      "tag": "nlu-manager"
+    },
+    "locales": [
+      "en",
+      "hi",
+      "te",
+      "ta",
+      "fr",
+      "es",
+      "de"
+    ],
+    "languageNames": {},
+    "domainManagers": {
+      "en": {
+        "settings": {
+          "locale": "en",
+          "trainByDomain": false,
+          "tag": "domain-manager-en",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "useStemDict": true
+        },
+        "stemDict": {
+          "is,phish,what": {
+            "intent": "cyber.phishing",
+            "domain": "default"
+          },
+          "phish": {
+            "intent": "cyber.phishing",
+            "domain": "default"
+          },
+          "email,fake": {
+            "intent": "cyber.phishing",
+            "domain": "default"
+          },
+          "link,suspici": {
+            "intent": "cyber.phishing",
+            "domain": "default"
+          },
+          "do,hacker,how,password,steal": {
+            "intent": "cyber.password_security",
+            "domain": "default"
+          },
+          "hack,password": {
+            "intent": "cyber.password_security",
+            "domain": "default"
+          },
+          "password,stolen": {
+            "intent": "cyber.password_security",
+            "domain": "default"
+          },
+          "attack,password": {
+            "intent": "cyber.password_security",
+            "domain": "default"
+          },
+          "is,malwar,what": {
+            "intent": "cyber.malware",
+            "domain": "default"
+          },
+          "virus": {
+            "intent": "cyber.malware",
+            "domain": "default"
+          },
+          "trojan": {
+            "intent": "cyber.malware",
+            "domain": "default"
+          },
+          "malici,softwar": {
+            "intent": "cyber.malware",
+            "domain": "default"
+          },
+          "is,ransomwar,what": {
+            "intent": "cyber.ransomware",
+            "domain": "default"
+          },
+          "attack,ransomwar": {
+            "intent": "cyber.ransomware",
+            "domain": "default"
+          },
+          "encrypt,file": {
+            "intent": "cyber.ransomware",
+            "domain": "default"
+          },
+          "do,home,how,i,my,network,secur,wi-fi": {
+            "intent": "faq.network.6a33ac113a08318a8ded4acc",
+            "domain": "default"
+          },
+          "a,incid,is,plan,respons,secur,what": {
+            "intent": "faq.threats.6a33ac113a08318a8ded4acd",
+            "domain": "default"
+          },
+          "and,asymmetr,between,differ,encrypt,is,symmetr,the,what": {
+            "intent": "faq.general.6a33b5a835a610d503b33633",
+            "domain": "default"
+          },
+          "asymmetr,encrypt,explain": {
+            "intent": "faq.general.6a33bae8cb16e1fdad27b0ea",
+            "domain": "default"
+          }
+        },
+        "intentDict": {
+          "cyber.phishing": "default",
+          "cyber.password_security": "default",
+          "cyber.malware": "default",
+          "cyber.ransomware": "default",
+          "faq.network.6a33ac113a08318a8ded4acc": "default",
+          "faq.threats.6a33ac113a08318a8ded4acd": "default",
+          "faq.general.6a33b5a835a610d503b33633": "default",
+          "faq.general.6a33bae8cb16e1fdad27b0ea": "default"
+        },
+        "sentences": [
+          {
+            "domain": "default",
+            "utterance": "what is phishing",
+            "intent": "cyber.phishing"
+          },
+          {
+            "domain": "default",
+            "utterance": "phishing",
+            "intent": "cyber.phishing"
+          },
+          {
+            "domain": "default",
+            "utterance": "fake email",
+            "intent": "cyber.phishing"
+          },
+          {
+            "domain": "default",
+            "utterance": "suspicious link",
+            "intent": "cyber.phishing"
+          },
+          {
+            "domain": "default",
+            "utterance": "how do hackers steal passwords",
+            "intent": "cyber.password_security"
+          },
+          {
+            "domain": "default",
+            "utterance": "password hacking",
+            "intent": "cyber.password_security"
+          },
+          {
+            "domain": "default",
+            "utterance": "stolen passwords",
+            "intent": "cyber.password_security"
+          },
+          {
+            "domain": "default",
+            "utterance": "password attack",
+            "intent": "cyber.password_security"
+          },
+          {
+            "domain": "default",
+            "utterance": "what is malware",
+            "intent": "cyber.malware"
+          },
+          {
+            "domain": "default",
+            "utterance": "virus",
+            "intent": "cyber.malware"
+          },
+          {
+            "domain": "default",
+            "utterance": "trojan",
+            "intent": "cyber.malware"
+          },
+          {
+            "domain": "default",
+            "utterance": "malicious software",
+            "intent": "cyber.malware"
+          },
+          {
+            "domain": "default",
+            "utterance": "what is ransomware",
+            "intent": "cyber.ransomware"
+          },
+          {
+            "domain": "default",
+            "utterance": "ransomware attack",
+            "intent": "cyber.ransomware"
+          },
+          {
+            "domain": "default",
+            "utterance": "encrypted files",
+            "intent": "cyber.ransomware"
+          },
+          {
+            "domain": "default",
+            "utterance": "How do I secure my home Wi-Fi network?",
+            "intent": "faq.network.6a33ac113a08318a8ded4acc"
+          },
+          {
+            "domain": "default",
+            "utterance": "What is a security incident response plan?",
+            "intent": "faq.threats.6a33ac113a08318a8ded4acd"
+          },
+          {
+            "domain": "default",
+            "utterance": "What is the difference between symmetric and asymmetric encryption?",
+            "intent": "faq.general.6a33b5a835a610d503b33633"
+          },
+          {
+            "domain": "default",
+            "utterance": "Explain asymmetric encryption",
+            "intent": "faq.general.6a33bae8cb16e1fdad27b0ea"
+          }
+        ],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "en",
+              "tag": "nlu-en",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {
+              "what": 1,
+              "is": 1,
+              "phish": 1,
+              "fake": 1,
+              "email": 1,
+              "suspici": 1,
+              "link": 1,
+              "how": 1,
+              "do": 1,
+              "hacker": 1,
+              "steal": 1,
+              "password": 1,
+              "hack": 1,
+              "stolen": 1,
+              "attack": 1,
+              "malwar": 1,
+              "virus": 1,
+              "trojan": 1,
+              "malici": 1,
+              "softwar": 1,
+              "ransomwar": 1,
+              "encrypt": 1,
+              "file": 1,
+              "i": 1,
+              "secur": 1,
+              "my": 1,
+              "home": 1,
+              "wi-fi": 1,
+              "network": 1,
+              "a": 1,
+              "incid": 1,
+              "respons": 1,
+              "plan": 1,
+              "the": 1,
+              "differ": 1,
+              "between": 1,
+              "symmetr": 1,
+              "and": 1,
+              "asymmetr": 1,
+              "explain": 1
+            },
+            "intents": {
+              "cyber.phishing": 1,
+              "cyber.password_security": 1,
+              "cyber.malware": 1,
+              "cyber.ransomware": 1,
+              "faq.network.6a33ac113a08318a8ded4acc": 1,
+              "faq.threats.6a33ac113a08318a8ded4acd": 1,
+              "faq.general.6a33b5a835a610d503b33633": 1,
+              "faq.general.6a33bae8cb16e1fdad27b0ea": 1
+            },
+            "intentFeatures": {
+              "cyber.phishing": {
+                "what": 1,
+                "is": 1,
+                "phish": 1,
+                "fake": 1,
+                "email": 1,
+                "suspici": 1,
+                "link": 1
+              },
+              "cyber.password_security": {
+                "how": 1,
+                "do": 1,
+                "hacker": 1,
+                "steal": 1,
+                "password": 1,
+                "hack": 1,
+                "stolen": 1,
+                "attack": 1
+              },
+              "cyber.malware": {
+                "what": 1,
+                "is": 1,
+                "malwar": 1,
+                "virus": 1,
+                "trojan": 1,
+                "malici": 1,
+                "softwar": 1
+              },
+              "cyber.ransomware": {
+                "what": 1,
+                "is": 1,
+                "ransomwar": 1,
+                "attack": 1,
+                "encrypt": 1,
+                "file": 1
+              },
+              "faq.network.6a33ac113a08318a8ded4acc": {
+                "how": 1,
+                "do": 1,
+                "i": 1,
+                "secur": 1,
+                "my": 1,
+                "home": 1,
+                "wi-fi": 1,
+                "network": 1
+              },
+              "faq.threats.6a33ac113a08318a8ded4acd": {
+                "what": 1,
+                "is": 1,
+                "a": 1,
+                "secur": 1,
+                "incid": 1,
+                "respons": 1,
+                "plan": 1
+              },
+              "faq.general.6a33b5a835a610d503b33633": {
+                "what": 1,
+                "is": 1,
+                "the": 1,
+                "differ": 1,
+                "between": 1,
+                "symmetr": 1,
+                "and": 1,
+                "asymmetr": 1,
+                "encrypt": 1
+              },
+              "faq.general.6a33bae8cb16e1fdad27b0ea": {
+                "explain": 1,
+                "asymmetr": 1,
+                "encrypt": 1
+              }
+            },
+            "featuresToIntent": {
+              "what": [
+                "cyber.phishing",
+                "cyber.malware",
+                "cyber.ransomware",
+                "faq.threats.6a33ac113a08318a8ded4acd",
+                "faq.general.6a33b5a835a610d503b33633"
+              ],
+              "is": [
+                "cyber.phishing",
+                "cyber.malware",
+                "cyber.ransomware",
+                "faq.threats.6a33ac113a08318a8ded4acd",
+                "faq.general.6a33b5a835a610d503b33633"
+              ],
+              "phish": [
+                "cyber.phishing"
+              ],
+              "fake": [
+                "cyber.phishing"
+              ],
+              "email": [
+                "cyber.phishing"
+              ],
+              "suspici": [
+                "cyber.phishing"
+              ],
+              "link": [
+                "cyber.phishing"
+              ],
+              "how": [
+                "cyber.password_security",
+                "faq.network.6a33ac113a08318a8ded4acc"
+              ],
+              "do": [
+                "cyber.password_security",
+                "faq.network.6a33ac113a08318a8ded4acc"
+              ],
+              "hacker": [
+                "cyber.password_security"
+              ],
+              "steal": [
+                "cyber.password_security"
+              ],
+              "password": [
+                "cyber.password_security"
+              ],
+              "hack": [
+                "cyber.password_security"
+              ],
+              "stolen": [
+                "cyber.password_security"
+              ],
+              "attack": [
+                "cyber.password_security",
+                "cyber.ransomware"
+              ],
+              "malwar": [
+                "cyber.malware"
+              ],
+              "virus": [
+                "cyber.malware"
+              ],
+              "trojan": [
+                "cyber.malware"
+              ],
+              "malici": [
+                "cyber.malware"
+              ],
+              "softwar": [
+                "cyber.malware"
+              ],
+              "ransomwar": [
+                "cyber.ransomware"
+              ],
+              "encrypt": [
+                "cyber.ransomware",
+                "faq.general.6a33b5a835a610d503b33633",
+                "faq.general.6a33bae8cb16e1fdad27b0ea"
+              ],
+              "file": [
+                "cyber.ransomware"
+              ],
+              "i": [
+                "faq.network.6a33ac113a08318a8ded4acc"
+              ],
+              "secur": [
+                "faq.network.6a33ac113a08318a8ded4acc",
+                "faq.threats.6a33ac113a08318a8ded4acd"
+              ],
+              "my": [
+                "faq.network.6a33ac113a08318a8ded4acc"
+              ],
+              "home": [
+                "faq.network.6a33ac113a08318a8ded4acc"
+              ],
+              "wi-fi": [
+                "faq.network.6a33ac113a08318a8ded4acc"
+              ],
+              "network": [
+                "faq.network.6a33ac113a08318a8ded4acc"
+              ],
+              "a": [
+                "faq.threats.6a33ac113a08318a8ded4acd"
+              ],
+              "incid": [
+                "faq.threats.6a33ac113a08318a8ded4acd"
+              ],
+              "respons": [
+                "faq.threats.6a33ac113a08318a8ded4acd"
+              ],
+              "plan": [
+                "faq.threats.6a33ac113a08318a8ded4acd"
+              ],
+              "the": [
+                "faq.general.6a33b5a835a610d503b33633"
+              ],
+              "differ": [
+                "faq.general.6a33b5a835a610d503b33633"
+              ],
+              "between": [
+                "faq.general.6a33b5a835a610d503b33633"
+              ],
+              "symmetr": [
+                "faq.general.6a33b5a835a610d503b33633"
+              ],
+              "and": [
+                "faq.general.6a33b5a835a610d503b33633"
+              ],
+              "asymmetr": [
+                "faq.general.6a33b5a835a610d503b33633",
+                "faq.general.6a33bae8cb16e1fdad27b0ea"
+              ],
+              "explain": [
+                "faq.general.6a33bae8cb16e1fdad27b0ea"
+              ]
+            },
+            "neuralNetwork": {
+              "settings": {
+                "locale": "en",
+                "tag": "nlu-en",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true,
+                "log": true
+              },
+              "features": [
+                "what",
+                "is",
+                "phish",
+                "fake",
+                "email",
+                "suspici",
+                "link",
+                "how",
+                "do",
+                "hacker",
+                "steal",
+                "password",
+                "hack",
+                "stolen",
+                "attack",
+                "malwar",
+                "virus",
+                "trojan",
+                "malici",
+                "softwar",
+                "ransomwar",
+                "encrypt",
+                "file",
+                "i",
+                "secur",
+                "my",
+                "home",
+                "wi-fi",
+                "network",
+                "a",
+                "incid",
+                "respons",
+                "plan",
+                "the",
+                "differ",
+                "between",
+                "symmetr",
+                "and",
+                "asymmetr",
+                "explain"
+              ],
+              "intents": [
+                "cyber.phishing",
+                "cyber.password_security",
+                "cyber.malware",
+                "cyber.ransomware",
+                "faq.network.6a33ac113a08318a8ded4acc",
+                "faq.threats.6a33ac113a08318a8ded4acd",
+                "faq.general.6a33b5a835a610d503b33633",
+                "faq.general.6a33bae8cb16e1fdad27b0ea"
+              ],
+              "perceptrons": [
+                [
+                  -0.062040992081165314,
+                  -0.062040992081165314,
+                  11.47629165649414,
+                  5.712348461151123,
+                  5.712348461151123,
+                  5.708991050720215,
+                  5.708991050720215,
+                  -0.6129558682441711,
+                  -0.6129558682441711,
+                  -0.3565595746040344,
+                  -0.3565595746040344,
+                  -2.4428796768188477,
+                  -0.7903457880020142,
+                  -0.737777829170227,
+                  -0.9966010451316833,
+                  -2.6660683155059814,
+                  -2.721402645111084,
+                  -2.698172092437744,
+                  -1.445311188697815,
+                  -1.445311188697815,
+                  -2.6244778633117676,
+                  -1.83013916015625,
+                  -1.039692997932434,
+                  -0.19742530584335327,
+                  -0.8046185374259949,
+                  -0.19742530584335327,
+                  -0.19742530584335327,
+                  -0.19742530584335327,
+                  -0.19742530584335327,
+                  -0.5606410503387451,
+                  -0.5606410503387451,
+                  -0.5606410503387451,
+                  -0.5606410503387451,
+                  -0.26501256227493286,
+                  -0.26501256227493286,
+                  -0.26501256227493286,
+                  -0.26501256227493286,
+                  -0.26501256227493286,
+                  -0.7789092063903809,
+                  -0.4557786285877228,
+                  2.805809557561897
+                ],
+                [
+                  -0.7564398646354675,
+                  -0.7564398646354675,
+                  -0.9088780283927917,
+                  -0.5376730561256409,
+                  -0.5376730561256409,
+                  -0.535560131072998,
+                  -0.535560131072998,
+                  0.31837865710258484,
+                  0.31837865710258484,
+                  0.9647217392921448,
+                  0.9647217392921448,
+                  10.898420333862305,
+                  2.717007875442505,
+                  2.6971306800842285,
+                  2.079244613647461,
+                  -0.30580011010169983,
+                  -0.9855499863624573,
+                  -0.971082329750061,
+                  -0.6232259273529053,
+                  -0.6232259273529053,
+                  -2.6693623065948486,
+                  -0.8109822869300842,
+                  -0.4312695264816284,
+                  -0.560509979724884,
+                  -0.655872642993927,
+                  -0.560509979724884,
+                  -0.560509979724884,
+                  -0.560509979724884,
+                  -0.560509979724884,
+                  -0.06134415045380592,
+                  -0.06134415045380592,
+                  -0.06134415045380592,
+                  -0.06134415045380592,
+                  -0.0400136336684227,
+                  -0.0400136336684227,
+                  -0.0400136336684227,
+                  -0.0400136336684227,
+                  -0.0400136336684227,
+                  -0.331532746553421,
+                  -0.27635517716407776,
+                  0.8422916090178285
+                ],
+                [
+                  0.13421115279197693,
+                  0.13421115279197693,
+                  -4.878164768218994,
+                  -2.3581888675689697,
+                  -2.3581888675689697,
+                  -2.352858543395996,
+                  -2.352858543395996,
+                  -0.6854836940765381,
+                  -0.6854836940765381,
+                  -0.24557606875896454,
+                  -0.24557606875896454,
+                  -3.4220168590545654,
+                  -1.3435508012771606,
+                  -1.314706802368164,
+                  -1.3638933897018433,
+                  8.829161643981934,
+                  9.177977561950684,
+                  9.109491348266602,
+                  4.746117115020752,
+                  4.746117115020752,
+                  -4.873747825622559,
+                  -2.9669783115386963,
+                  -1.7888665199279785,
+                  -0.4105736017227173,
+                  -1.3957833051681519,
+                  -0.4105736017227173,
+                  -0.4105736017227173,
+                  -0.4105736017227173,
+                  -0.4105736017227173,
+                  -0.9612417817115784,
+                  -0.9612417817115784,
+                  -0.9612417817115784,
+                  -0.9612417817115784,
+                  -0.44595977663993835,
+                  -0.44595977663993835,
+                  -0.44595977663993835,
+                  -0.44595977663993835,
+                  -0.44595977663993835,
+                  -1.1751232147216797,
+                  -0.6799923777580261,
+                  4.8218790643233005
+                ],
+                [
+                  0.703804612159729,
+                  0.703804612159729,
+                  -2.5235652923583984,
+                  -0.724867582321167,
+                  -0.724867582321167,
+                  -0.7143826484680176,
+                  -0.7143826484680176,
+                  -0.36843815445899963,
+                  -0.36843815445899963,
+                  -0.10430087894201279,
+                  -0.10430087894201279,
+                  -3.2590837478637695,
+                  -0.2449733167886734,
+                  -0.21313124895095825,
+                  1.9279030561447144,
+                  -2.4232778549194336,
+                  -1.1781208515167236,
+                  -1.1674795150756836,
+                  -0.6276127696037292,
+                  -0.6276127696037292,
+                  11.307398796081543,
+                  4.738098621368408,
+                  8.149246215820312,
+                  -0.20504751801490784,
+                  -0.854028046131134,
+                  -0.20504751801490784,
+                  -0.20504751801490784,
+                  -0.20504751801490784,
+                  -0.20504751801490784,
+                  -0.5806042551994324,
+                  -0.5806042551994324,
+                  -0.5806042551994324,
+                  -0.5806042551994324,
+                  -0.867904782295227,
+                  -0.867904782295227,
+                  -0.867904782295227,
+                  -0.867904782295227,
+                  -0.867904782295227,
+                  -3.4216041564941406,
+                  -2.484248399734497,
+                  1.2291567988512666
+                ],
+                [
+                  -0.3809848129749298,
+                  -0.3809848129749298,
+                  -0.12888172268867493,
+                  -0.09303459525108337,
+                  -0.09303459525108337,
+                  -0.08979775756597519,
+                  -0.08979775756597519,
+                  1.1595866680145264,
+                  1.1595866680145264,
+                  -0.820162832736969,
+                  -0.820162832736969,
+                  -0.8899303078651428,
+                  -0.020589085295796394,
+                  -0.010398978367447853,
+                  -0.06107466295361519,
+                  -0.0029017883352935314,
+                  -0.06803017854690552,
+                  -0.0654245987534523,
+                  -0.0577629953622818,
+                  -0.0577629953622818,
+                  -0.04580792784690857,
+                  -0.15519678592681885,
+                  -0.0317867286503315,
+                  2.0608694553375244,
+                  1.7002179622650146,
+                  2.0608694553375244,
+                  2.0608694553375244,
+                  2.0608694553375244,
+                  2.0608694553375244,
+                  -0.2957426905632019,
+                  -0.2957426905632019,
+                  -0.2957426905632019,
+                  -0.2957426905632019,
+                  -0.019173534587025642,
+                  -0.019173534587025642,
+                  -0.019173534587025642,
+                  -0.019173534587025642,
+                  -0.019173534587025642,
+                  -0.10405018925666809,
+                  -0.06912083923816681,
+                  -0.038029250015947716
+                ],
+                [
+                  0.3612436056137085,
+                  0.3612436056137085,
+                  -0.7461842894554138,
+                  -0.05158137157559395,
+                  -0.05158137157559395,
+                  -0.049653779715299606,
+                  -0.049653779715299606,
+                  -0.3834819793701172,
+                  -0.3834819793701172,
+                  -0.02595795877277851,
+                  -0.02595795877277851,
+                  -0.1397947072982788,
+                  -0.029407070949673653,
+                  -0.02621743083000183,
+                  -0.027920201420783997,
+                  -0.6861609220504761,
+                  -0.030244166031479836,
+                  -0.029046306386590004,
+                  -0.026422148570418358,
+                  -0.026422148570418358,
+                  -0.6216596364974976,
+                  -0.32100987434387207,
+                  -0.0000026460484150447883,
+                  -0.34754541516304016,
+                  2.4578306674957275,
+                  -0.34754541516304016,
+                  -0.34754541516304016,
+                  -0.34754541516304016,
+                  -0.34754541516304016,
+                  2.834439277648926,
+                  2.834439277648926,
+                  2.834439277648926,
+                  2.834439277648926,
+                  -0.28376173973083496,
+                  -0.28376173973083496,
+                  -0.28376173973083496,
+                  -0.28376173973083496,
+                  -0.28376173973083496,
+                  -0.3208879828453064,
+                  -0.015970807522535324,
+                  -0.232314573119053
+                ],
+                [
+                  0.5461630821228027,
+                  0.5461630821228027,
+                  -0.5284343361854553,
+                  -0.03275041654706001,
+                  -0.03275041654706001,
+                  -0.0314529724419117,
+                  -0.0314529724419117,
+                  -0.02789858728647232,
+                  -0.02789858728647232,
+                  -0.01726415380835533,
+                  -0.01726415380835533,
+                  -0.11637420207262039,
+                  -0.024641770869493484,
+                  -0.021611442789435387,
+                  -0.02365792542695999,
+                  -0.516346275806427,
+                  -0.018182160332798958,
+                  -0.017442647367715836,
+                  -0.016255462542176247,
+                  -0.016255462542176247,
+                  -0.47461551427841187,
+                  0.7791281938552856,
+                  -0.34599629044532776,
+                  -0.0023914510384202003,
+                  -0.22559292614459991,
+                  -0.0023914510384202003,
+                  -0.0023914510384202003,
+                  -0.0023914510384202003,
+                  -0.0023914510384202003,
+                  -0.22097355127334595,
+                  -0.22097355127334595,
+                  -0.22097355127334595,
+                  -0.22097355127334595,
+                  2.39098858833313,
+                  2.39098858833313,
+                  2.39098858833313,
+                  2.39098858833313,
+                  2.39098858833313,
+                  1.1524370908737183,
+                  -1.2385128736495972,
+                  -0.693134900080712
+                ],
+                [
+                  -1.2348060607910156,
+                  -1.2348060607910156,
+                  -0.33602312207221985,
+                  -0.20758068561553955,
+                  -0.20758068561553955,
+                  -0.20288431644439697,
+                  -0.20288431644439697,
+                  -0.11234100908041,
+                  -0.11234100908041,
+                  -0.06464304774999619,
+                  -0.06464304774999619,
+                  -0.37205755710601807,
+                  -0.10483381152153015,
+                  -0.09405763447284698,
+                  -0.2186003029346466,
+                  -0.027872929349541664,
+                  -0.2902645468711853,
+                  -0.2862032353878021,
+                  -0.18509052693843842,
+                  -0.18509052693843842,
+                  -0.1637635976076126,
+                  2.552769660949707,
+                  -2.628737449645996,
+                  -0.032015878707170486,
+                  -0.041517384350299835,
+                  -0.032015878707170486,
+                  -0.032015878707170486,
+                  -0.032015878707170486,
+                  -0.032015878707170486,
+                  -0.004769140388816595,
+                  -0.004769140388816595,
+                  -0.004769140388816595,
+                  -0.004769140388816595,
+                  -1.0902888774871826,
+                  -1.0902888774871826,
+                  -1.0902888774871826,
+                  -1.0902888774871826,
+                  -1.0902888774871826,
+                  5.1919474601745605,
+                  6.279044151306152,
+                  0.19023933664185735
+                ]
+              ]
+            }
+          }
+        }
+      },
+      "hi": {
+        "settings": {
+          "locale": "hi",
+          "trainByDomain": false,
+          "tag": "domain-manager-hi",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "useStemDict": true
+        },
+        "stemDict": {},
+        "intentDict": {},
+        "sentences": [],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "hi",
+              "tag": "nlu-hi",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {},
+            "intents": {},
+            "intentFeatures": {},
+            "featuresToIntent": {},
+            "neuralNetwork": {
+              "settings": {
+                "locale": "hi",
+                "tag": "nlu-hi",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true,
+                "log": true
+              }
+            }
+          }
+        }
+      },
+      "te": {
+        "settings": {
+          "locale": "te",
+          "trainByDomain": false,
+          "tag": "domain-manager-te",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "useStemDict": true
+        },
+        "stemDict": {},
+        "intentDict": {},
+        "sentences": [],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "te",
+              "tag": "nlu-te",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {},
+            "intents": {},
+            "intentFeatures": {},
+            "featuresToIntent": {},
+            "neuralNetwork": {
+              "settings": {
+                "locale": "te",
+                "tag": "nlu-te",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true,
+                "log": true
+              }
+            }
+          }
+        }
+      },
+      "ta": {
+        "settings": {
+          "locale": "ta",
+          "trainByDomain": false,
+          "tag": "domain-manager-ta",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "useStemDict": true
+        },
+        "stemDict": {},
+        "intentDict": {},
+        "sentences": [],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "ta",
+              "tag": "nlu-ta",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {},
+            "intents": {},
+            "intentFeatures": {},
+            "featuresToIntent": {},
+            "neuralNetwork": {
+              "settings": {
+                "locale": "ta",
+                "tag": "nlu-ta",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true,
+                "log": true
+              }
+            }
+          }
+        }
+      },
+      "fr": {
+        "settings": {
+          "locale": "fr",
+          "trainByDomain": false,
+          "tag": "domain-manager-fr",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "useStemDict": true
+        },
+        "stemDict": {},
+        "intentDict": {},
+        "sentences": [],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "fr",
+              "tag": "nlu-fr",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {},
+            "intents": {},
+            "intentFeatures": {},
+            "featuresToIntent": {},
+            "neuralNetwork": {
+              "settings": {
+                "locale": "fr",
+                "tag": "nlu-fr",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true,
+                "log": true
+              }
+            }
+          }
+        }
+      },
+      "es": {
+        "settings": {
+          "locale": "es",
+          "trainByDomain": false,
+          "tag": "domain-manager-es",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "useStemDict": true
+        },
+        "stemDict": {},
+        "intentDict": {},
+        "sentences": [],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "es",
+              "tag": "nlu-es",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {},
+            "intents": {},
+            "intentFeatures": {},
+            "featuresToIntent": {},
+            "neuralNetwork": {
+              "settings": {
+                "locale": "es",
+                "tag": "nlu-es",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true,
+                "log": true
+              }
+            }
+          }
+        }
+      },
+      "de": {
+        "settings": {
+          "locale": "de",
+          "trainByDomain": false,
+          "tag": "domain-manager-de",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "useStemDict": true
+        },
+        "stemDict": {},
+        "intentDict": {},
+        "sentences": [],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "de",
+              "tag": "nlu-de",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {},
+            "intents": {},
+            "intentFeatures": {},
+            "featuresToIntent": {},
+            "neuralNetwork": {
+              "settings": {
+                "locale": "de",
+                "tag": "nlu-de",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true,
+                "log": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "intentDomains": {},
+    "extraSentences": [
+      [
+        "en",
+        "what is phishing"
+      ],
+      [
+        "en",
+        "phishing"
+      ],
+      [
+        "en",
+        "fake email"
+      ],
+      [
+        "en",
+        "suspicious link"
+      ],
+      [
+        "en",
+        "how do hackers steal passwords"
+      ],
+      [
+        "en",
+        "password hacking"
+      ],
+      [
+        "en",
+        "stolen passwords"
+      ],
+      [
+        "en",
+        "password attack"
+      ],
+      [
+        "en",
+        "what is malware"
+      ],
+      [
+        "en",
+        "virus"
+      ],
+      [
+        "en",
+        "trojan"
+      ],
+      [
+        "en",
+        "malicious software"
+      ],
+      [
+        "en",
+        "what is ransomware"
+      ],
+      [
+        "en",
+        "ransomware attack"
+      ],
+      [
+        "en",
+        "encrypted files"
+      ],
+      [
+        "en",
+        "How do I secure my home Wi-Fi network?"
+      ],
+      [
+        "en",
+        "What is a security incident response plan?"
+      ],
+      [
+        "en",
+        "What is the difference between symmetric and asymmetric encryption?"
+      ],
+      [
+        "en",
+        "Explain asymmetric encryption"
+      ]
+    ]
+  },
+  "ner": {
+    "settings": {
+      "tag": "ner",
+      "entityPreffix": "%",
+      "entitySuffix": "%"
+    },
+    "rules": {}
+  },
+  "nlgManager": {
+    "settings": {
+      "tag": "nlg-manager"
+    },
+    "responses": {
+      "en": {
+        "cyber.phishing": [
+          {
+            "answer": "Phishing is a cyber attack where hackers trick users into revealing passwords, OTPs, or bank details using fake emails, websites, or messages."
+          }
+        ],
+        "cyber.password_security": [
+          {
+            "answer": "Hackers steal passwords using phishing pages, malware, keyloggers, weak passwords, and leaked databases. Use strong passwords and enable two-factor authentication."
+          }
+        ],
+        "cyber.malware": [
+          {
+            "answer": "Malware is harmful software designed to damage systems, steal data, or spy on users."
+          }
+        ],
+        "cyber.ransomware": [
+          {
+            "answer": "Ransomware is malware that locks or encrypts files and demands payment to restore access."
+          }
+        ],
+        "faq.network.6a33ac113a08318a8ded4acc": [
+          {
+            "answer": "Change default router credentials, use WPA3 or WPA2-AES, hide SSID if appropriate, disable WPS, enable guest network for IoT, and keep firmware updated."
+          }
+        ],
+        "faq.threats.6a33ac113a08318a8ded4acd": [
+          {
+            "answer": "An IR plan defines roles, detection, containment, eradication, recovery, and lessons learned after a breach. Practice tabletop exercises and keep emergency contacts updated."
+          }
+        ],
+        "faq.general.6a33b5a835a610d503b33633": [
+          {
+            "answer": "Symmetric encryption uses one key for both encryption and decryption. Asymmetric encryption uses two keys: a public key for encryption and a private key for decryption."
+          }
+        ],
+        "faq.general.6a33bae8cb16e1fdad27b0ea": [
+          {
+            "answer": "**Asymmetric encryption** uses a pair of keys to secure data:\n* **Public Key**: Shared with anyone to **encrypt** data.\n* **Private Key**: Kept secret by the owner to **decrypt** data.\n* **Security**: Ensures confidentiality and authentication."
+          }
+        ]
+      }
+    }
+  },
+  "actionManager": {
+    "settings": {
+      "tag": "action-manager"
+    },
+    "actions": {}
+  },
+  "slotManager": {}
+}

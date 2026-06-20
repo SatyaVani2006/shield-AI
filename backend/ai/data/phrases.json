@@ -1,0 +1,42 @@
+{
+  "hello! i'm shield ai, your cybersecurity assistant. how can i help you stay secure today?": {
+    "hi": "नमस्ते! मैं SHIELD AI हूँ, आपका साइबर सुरक्षा सहायक। आज मैं आपकी सुरक्षा में कैसे मदद कर सकता हूँ?",
+    "te": "హలో! నేను SHIELD AI, మీ సైబర్ సెక్యూరిటీ అసిస్టెంట్. ఈరోజు మీ భద్రతకు ఎలా సహాయం చేయగలను?",
+    "ta": "வணக்கம்! நான் SHIELD AI, உங்கள் சைபர் பாதுகாப்பு உதவியாளர். இன்று உங்கள் பாதுகாப்பில் எப்படி உதவலாம்?",
+    "fr": "Bonjour ! Je suis SHIELD AI, votre assistant cybersécurité. Comment puis-je vous aider à rester en sécurité aujourd'hui ?",
+    "es": "¡Hola! Soy SHIELD AI, tu asistente de ciberseguridad. ¿Cómo puedo ayudarte a mantenerte seguro hoy?",
+    "de": "Hallo! Ich bin SHIELD AI, Ihr Cybersicherheits-Assistent. Wie kann ich Ihnen heute bei Ihrer Sicherheit helfen?"
+  },
+  "use a strong, unique password for every account and enable multi-factor authentication (mfa) wherever possible.": {
+    "hi": "हर खाते के लिए मजबूत, अद्वितीय पासवर्ड का उपयोग करें और जहाँ संभव हो बहु-कारक प्रमाणीकरण (MFA) सक्षम करें।",
+    "te": "ప్రతి ఖాతాకు బలమైన, ప్రత్యేకమైన పాస్‌వర్డ్ ఉపయోగించండి మరియు సాధ్యమైన చోట్లలో బహుళ-కారక ప్రామాణీకరణ (MFA) ప్రారంభించండి.",
+    "ta": "ஒவ்வொரு கணக்கிற்கும் வலுவான, தனித்துவமான கடவுச்சொல்லைப் பயன்படுத்தி, முடிந்த இடங்களில் பல-காரணி அங்கீகாரத்தை (MFA) இயக்கவும்.",
+    "fr": "Utilisez un mot de passe fort et unique pour chaque compte et activez l'authentification multifacteur (MFA) partout où c'est possible.",
+    "es": "Use una contraseña fuerte y única para cada cuenta y habilite la autenticación multifactor (MFA) siempre que sea posible.",
+    "de": "Verwenden Sie für jedes Konto ein starkes, einzigartiges Passwort und aktivieren Sie nach Möglichkeit die Multi-Faktor-Authentifizierung (MFA)."
+  },
+  "never click suspicious links in emails or messages. verify the sender and url before entering credentials.": {
+    "hi": "ईमेल या संदेशों में संदिग्ध लिंक पर कभी क्लिक न करें। क्रेडेंशियल दर्ज करने से पहले प्रेषक और URL सत्यापित करें।",
+    "te": "ఇమెయిల్ లేదా సందేశాలలో సంశయాస్పద లింక్‌లపై క్లిక్ చేయవద్దు. లాగిన్ వివరాలు ఇవ్వే ముందు పంపినవారిని మరియు URLని ధృవీకరించండి.",
+    "ta": "மின்னஞ்சல் அல்லது செய்திகளில் சந்தேகத்திற்கிடமான இணைப்புகளை ஒருபோதும் கிளிக் செய்ய வேண்டாம். சான்றுகளை உள்ளிடுவதற்கு முன் அனுப்புநரையும் URL-ஐயும் சரிபார்க்கவும்.",
+    "fr": "Ne cliquez jamais sur des liens suspects dans les e-mails ou messages. Vérifiez l'expéditeur et l'URL avant de saisir vos identifiants.",
+    "es": "Nunca haga clic en enlaces sospechosos en correos o mensajes. Verifique el remitente y la URL antes de ingresar credenciales.",
+    "de": "Klicken Sie niemals auf verdächtige Links in E-Mails oder Nachrichten. Überprüfen Sie Absender und URL, bevor Sie Anmeldedaten eingeben."
+  },
+  "keep your operating system, browsers, and applications updated to patch known vulnerabilities.": {
+    "hi": "ज्ञात कमजोरियों को ठीक करने के लिए अपने ऑपरेटिंग सिस्टम, ब्राउज़र और एप्लिकेशन को अपडेट रखें।",
+    "te": "తెలిసిన బలహీనతలను పరిష్కరించడానికి మీ OS, బ్రౌజర్లు మరియు అప్లికేషన్లను నవీకరించండి.",
+    "ta": "அறியப்பட்ட பாதிப்புகளை சரிசெய்ய உங்கள் OS, உலாவிகள் மற்றும் பயன்பாடுகளை புதுப்பித்த நிலையில் வைத்திருங்கள்.",
+    "fr": "Maintenez à jour votre système d'exploitation, vos navigateurs et vos applications pour corriger les vulnérabilités connues.",
+    "es": "Mantenga actualizados su sistema operativo, navegadores y aplicaciones para corregir vulnerabilidades conocidas.",
+    "de": "Halten Sie Betriebssystem, Browser und Anwendungen aktuell, um bekannte Schwachstellen zu beheben."
+  },
+  "i'm not sure about that. try asking about passwords, phishing, malware, network security, or browse the faq section.": {
+    "hi": "मुझे इसके बारे में पक्का नहीं पता। पासवर्ड, फ़िशिंग, मैलवेयर, नेटवर्क सुरक्षा के बारे में पूछें या FAQ अनुभाग देखें।",
+    "te": "నాకు ఖచ్చితంగా తెలియదు. పాస్‌వర్డ్‌లు, ఫిషింగ్, మాల్వేర్, నెట్‌వర్క్ భద్రత గురించి అడగండి లేదా FAQ చూడండి.",
+    "ta": "எனக்கு உறுதியாகத் தெரியவில்லை. கடவுச்சொல், ஃபிஷிங், மால்வேர், நெட்வொர்க் பாதுகாப்பு பற்றி கேளுங்கள் அல்லது FAQ பாருங்கள்.",
+    "fr": "Je ne suis pas sûr. Essayez de poser des questions sur les mots de passe, le phishing, les malwares, la sécurité réseau, ou consultez la FAQ.",
+    "es": "No estoy seguro. Pregunte sobre contraseñas, phishing, malware, seguridad de red o consulte las FAQ.",
+    "de": "Da bin ich mir nicht sicher. Fragen Sie zu Passwörtern, Phishing, Malware, Netzwerksicherheit oder nutzen Sie die FAQ."
+  }
+}
