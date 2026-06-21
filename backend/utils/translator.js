@@ -36,6 +36,55 @@ const translateWithLibre = async (text, sourceLang, targetLang) => {
   }
 };
 
+const translateWithAI = async (text, targetLang) => {
+  const apiKey = process.env.GROQ_API_KEY;
+  if (!apiKey) return null;
+
+  const langNames = {
+    hi: 'Hindi',
+    te: 'Telugu',
+    ta: 'Tamil',
+    fr: 'French',
+    es: 'Spanish',
+    de: 'German',
+  };
+  const targetLangName = langNames[targetLang] || targetLang;
+
+  try {
+    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        model: 'llama-3.3-70b-versatile',
+        messages: [
+          {
+            role: 'system',
+            content: `You are a professional, high-fidelity translator. Translate the user text directly into ${targetLangName}. Keep the formatting (markdown, bolding, line breaks) intact. Return only the translated text. Do not add any conversational remarks or explanations.`,
+          },
+          {
+            role: 'user',
+            content: text,
+          }
+        ],
+        temperature: 0.1,
+      }),
+      signal: AbortSignal.timeout(8000),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      const translated = data?.choices?.[0]?.message?.content;
+      return translated || null;
+    }
+  } catch (err) {
+    console.error('[AI TRANSLATE ERROR]:', err.message);
+  }
+  return null;
+};
+
 const translateText = async (text, targetLang, sourceLang = 'en') => {
   if (!text || !SUPPORTED.includes(targetLang) || targetLang === sourceLang) {
     return text;
@@ -47,7 +96,11 @@ const translateText = async (text, targetLang, sourceLang = 'en') => {
   const libre = await translateWithLibre(text, sourceLang, targetLang);
   if (libre) return libre;
 
-  // Fallback: return English with language notice for unsupported dynamic text
+  // Fallback to high-quality AI translation
+  const aiTranslated = await translateWithAI(text, targetLang);
+  if (aiTranslated) return aiTranslated;
+
+  // Final fallback if AI translation fails
   if (targetLang !== 'en') {
     return `${text}\n\n_[Response in English — enable LibreTranslate or expand phrase maps for full ${targetLang} translation.]_`;
   }
