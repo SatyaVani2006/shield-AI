@@ -535,3 +535,13 @@ a:hover {
     margin-bottom: 0.85rem;
   }
 }
+
+/* Custom styled password toggle button */
+.password-toggle-btn:hover {
+  color: var(--neon) !important;
+}
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}
+
