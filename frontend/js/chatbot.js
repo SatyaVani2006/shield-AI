@@ -166,7 +166,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (role === 'assistant') {
       const btn = div.querySelector('.msg-speak-btn');
       btn.addEventListener('click', () => {
-        const textToSpeak = div.dataset.rawText || contentEl.innerText;
+        const hasSupport = ShieldVoice.hasVoiceSupport(langSelect.value);
+        let textToSpeak = div.dataset.rawText || contentEl.innerText;
+        let speakLang = langSelect.value;
+
+        if (!hasSupport && langSelect.value !== 'en') {
+          textToSpeak = div.dataset.englishText || textToSpeak;
+          speakLang = 'en';
+          console.warn(`[SHIELD AI] No native voice support for language "${langSelect.value}". Falling back to English voice.`);
+        }
 
         if (btn.classList.contains('speaking')) {
           ShieldVoice.stopSpeaking();
@@ -180,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
           otherBtn.textContent = '🔊';
         });
 
-        ShieldVoice.speak(textToSpeak, langSelect.value, voiceGender.value, {
+        ShieldVoice.speak(textToSpeak, speakLang, voiceGender.value, {
           onStart: () => {
             btn.classList.add('speaking');
             btn.textContent = '⏹️';
@@ -333,12 +341,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const contentEl = appendMessage('assistant', '', '');
       contentEl.parentElement.dataset.rawText = data.reply;
+      contentEl.parentElement.dataset.englishText = data.originalReply || data.reply;
       await typeWriter(contentEl, data.reply);
       lastAssistantReply = data.reply;
 
       const autoSpeak = localStorage.getItem('shield_auto_speak') === '1';
       if (autoSpeak) {
-        ShieldVoice.speak(data.reply, langSelect.value, voiceGender.value);
+        const hasSupport = ShieldVoice.hasVoiceSupport(langSelect.value);
+        const textToSpeak = hasSupport ? data.reply : (data.originalReply || data.reply);
+        const speakLang = hasSupport ? langSelect.value : 'en';
+        ShieldVoice.speak(textToSpeak, speakLang, voiceGender.value);
       }
 
       await loadHistory();

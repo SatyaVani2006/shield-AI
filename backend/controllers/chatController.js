@@ -109,6 +109,7 @@ exports.sendMessage = async (req, res) => {
       sessionId:
         chat.sessionId,
       reply,
+      originalReply: ai.reply,
       meta: {
         intent: ai.intent,
         confidence:

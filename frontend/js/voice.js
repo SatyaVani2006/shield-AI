@@ -181,6 +181,15 @@ const ShieldVoice = (() => {
     viz.classList.toggle('listening', active);
   };
 
+  const hasVoiceSupport = (langCode) => {
+    if (!synth) return false;
+    if (langCode === 'en') return true;
+    const voices = synth.getVoices();
+    const locale = ShieldTranslate.getSpeechLocale(langCode);
+    const prefix = locale.split('-')[0];
+    return voices.some((v) => v.lang.toLowerCase().startsWith(prefix.toLowerCase()));
+  };
+
   if (synth) {
     synth.onvoiceschanged = () => {};
   }
@@ -193,6 +202,7 @@ const ShieldVoice = (() => {
     speak,
     stopSpeaking,
     isSpeaking,
+    hasVoiceSupport,
     get listening() {
       return listening;
     },
