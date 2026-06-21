@@ -80,7 +80,7 @@ const ShieldVoice = (() => {
     const prefix = locale.split('-')[0];
 
     const match = voices.filter((v) => v.lang.startsWith(prefix));
-    if (!match.length) return voices[0];
+    if (!match.length) return null; // Let the browser fallback to its default voice for the locale instead of forcing English
 
     const female = match.find((v) => /female|woman|zira|samantha|neural/i.test(v.name));
     const male = match.find((v) => /male|man|david|mark|neural/i.test(v.name));
