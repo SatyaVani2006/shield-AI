@@ -9,6 +9,8 @@ const ShieldVoice = (() => {
   let listening = false;
   let onResult = null;
   let onError = null;
+  let activeUtterance = null;
+  let keepAliveInterval = null;
 
   const isSupported = () => !!(SpeechRecognition && synth);
 
@@ -105,12 +107,19 @@ const ShieldVoice = (() => {
 
   const speak = (text, langCode = 'en', gender = 'female', callbacks = {}) => {
     if (!synth || !text) return;
-    synth.cancel();
     
-    // 100ms timeout resolves issues in Chrome/Edge where cancel() cancels the next speak() call if called synchronously
+    // Clear any active utterance and keep-alive intervals
+    synth.cancel();
+    if (keepAliveInterval) {
+      clearInterval(keepAliveInterval);
+      keepAliveInterval = null;
+    }
+    
     setTimeout(() => {
       const cleanText = stripMarkdown(text);
       const utter = new SpeechSynthesisUtterance(cleanText);
+      activeUtterance = utter; // Store globally to prevent garbage collection
+      
       utter.lang = ShieldTranslate.getSpeechLocale(langCode);
       const voice = pickVoice(langCode, gender);
       if (voice) utter.voice = voice;
@@ -118,13 +127,32 @@ const ShieldVoice = (() => {
       utter.pitch = gender === 'male' ? 0.85 : 1.05;
       
       utter.onstart = () => {
+        // Keep-alive hack: pause & resume every 10 seconds to bypass browser 15s limit
+        keepAliveInterval = setInterval(() => {
+          if (!synth.speaking) {
+            clearInterval(keepAliveInterval);
+            keepAliveInterval = null;
+          } else {
+            synth.pause();
+            synth.resume();
+          }
+        }, 10000);
         callbacks.onStart?.();
       };
-      utter.onend = () => {
+      
+      const handleEnd = () => {
+        if (keepAliveInterval) {
+          clearInterval(keepAliveInterval);
+          keepAliveInterval = null;
+        }
+        if (activeUtterance === utter) activeUtterance = null;
         callbacks.onEnd?.();
       };
-      utter.onerror = () => {
-        callbacks.onEnd?.();
+      
+      utter.onend = handleEnd;
+      utter.onerror = (err) => {
+        console.warn('[SHIELD AI] Speech error or canceled:', err);
+        handleEnd();
       };
       
       synth.speak(utter);
@@ -135,6 +163,11 @@ const ShieldVoice = (() => {
     if (synth) {
       synth.cancel();
     }
+    if (keepAliveInterval) {
+      clearInterval(keepAliveInterval);
+      keepAliveInterval = null;
+    }
+    activeUtterance = null;
   };
 
   const isSpeaking = () => {
