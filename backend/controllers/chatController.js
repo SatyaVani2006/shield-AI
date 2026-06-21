@@ -94,6 +94,7 @@ exports.sendMessage = async (req, res) => {
     chat.messages.push({
       role: 'assistant',
       content: reply,
+      originalContent: ai.reply,
       detectedLanguage:
         preferred,
     });

@@ -282,6 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
         el.innerHTML = formatMarkdown(m.content);
         if (m.role === 'assistant') {
           el.parentElement.dataset.rawText = m.content;
+          el.parentElement.dataset.englishText = m.originalContent || m.content;
           lastAssistantReply = m.content;
         }
       });
