@@ -1,10 +1,12 @@
 const { validationResult } = require('express-validator');
 const Faq = require('../models/Faq');
 const { retrainFromFaqs } = require('../ai/nlpEngine');
+const { isCyberRelated } = require('../utils/relevancy');
 
 exports.list = async (req, res) => {
   try {
-    const faqs = await Faq.find().sort({ updatedAt: -1 });
+    // Only return FAQs created by the currently logged-in user
+    const faqs = await Faq.find({ userId: req.user._id }).sort({ updatedAt: -1 });
     res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
     res.setHeader('Pragma', 'no-cache');
     res.setHeader('Expires', '0');
@@ -21,14 +23,28 @@ exports.create = async (req, res) => {
       return res.status(400).json({ success: false, errors: errors.array() });
     }
     const { question, answer, category, keywords, language } = req.body;
+
+    // Check cybersecurity relevancy
+    const isRelated = await isCyberRelated(question, answer);
+    if (!isRelated) {
+      return res.status(400).json({
+        success: false,
+        message: 'Submission rejected: The question and answer must be relevant to cybersecurity, online safety, or threats.',
+      });
+    }
+
     const faq = await Faq.create({
       question,
       answer,
       category: category || 'general',
       keywords: keywords || [],
       language: language || 'en',
+      userId: req.user._id,
     });
-    await retrainFromFaqs().catch(() => {});
+
+    // Retrain model in the background so it can match this FAQ
+    retrainFromFaqs().catch(() => {});
+
     res.status(201).json({ success: true, faq });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });
@@ -37,66 +53,44 @@ exports.create = async (req, res) => {
 
 exports.update = async (req, res) => {
   try {
-    const faq = await Faq.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    if (!faq) return res.status(404).json({ success: false, message: 'FAQ not found' });
-    await retrainFromFaqs().catch(() => {});
+    const faq = await Faq.findById(req.params.id);
+    if (!faq) {
+      return res.status(404).json({ success: false, message: 'FAQ not found' });
+    }
+
+    // Verify ownership: only the user who created it can edit it
+    if (!faq.userId || faq.userId.toString() !== req.user._id.toString()) {
+      return res.status(403).json({
+        success: false,
+        message: 'Access denied: You can only edit FAQs that you submitted.',
+      });
+    }
+
+    const { question, answer, category, keywords, language } = req.body;
+
+    // Check cybersecurity relevancy of updated content
+    const isRelated = await isCyberRelated(question || faq.question, answer || faq.answer);
+    if (!isRelated) {
+      return res.status(400).json({
+        success: false,
+        message: 'Update rejected: The updated question and answer must be relevant to cybersecurity, online safety, or threats.',
+      });
+    }
+
+    if (question) faq.question = question;
+    if (answer) faq.answer = answer;
+    if (category) faq.category = category;
+    if (keywords) faq.keywords = keywords;
+    if (language) faq.language = language;
+
+    await faq.save();
+
+    // Retrain in background
+    retrainFromFaqs().catch(() => {});
+
     res.json({ success: true, faq });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });
   }
 };
 
-exports.remove = async (req, res) => {
-  try {
-    const { id } = req.params;
-    let deletedFaq = null;
-
-    // 1. Try finding and deleting as Mongoose ObjectId
-    try {
-      deletedFaq = await Faq.findByIdAndDelete(id);
-    } catch (castErr) {
-      console.warn(`[SHIELD AI] Mongoose ObjectId cast failed for ID: ${id}. Trying string match...`);
-    }
-
-    // 2. Fallback to raw MongoDB collection deletion to bypass Mongoose casting
-    if (!deletedFaq) {
-      try {
-        const { ObjectId } = require('mongoose').Types;
-        if (ObjectId.isValid(id)) {
-          const rawResult = await Faq.collection.deleteOne({ _id: new ObjectId(id) });
-          if (rawResult.deletedCount > 0) {
-            deletedFaq = true;
-          }
-        }
-      } catch (err) {
-        console.warn(`[SHIELD AI] Raw ObjectId delete failed: ${err.message}`);
-      }
-
-      if (!deletedFaq) {
-        const rawResult = await Faq.collection.deleteOne({ _id: id });
-        if (rawResult.deletedCount > 0) {
-          deletedFaq = true;
-        }
-      }
-    }
-
-    await retrainFromFaqs().catch((retrainErr) => {
-      console.error('[SHIELD AI] Retraining failed after deletion:', retrainErr.message);
-    });
-
-    res.json({ success: true, message: 'FAQ removed' });
-  } catch (err) {
-    console.error('[SHIELD AI] Error removing FAQ:', err.message);
-    res.status(500).json({ success: false, message: err.message });
-  }
-};
-
-exports.train = async (req, res) => {
-  try {
-    await retrainFromFaqs();
-    const count = await Faq.countDocuments();
-    res.json({ success: true, message: `NLP retrained on ${count} FAQs` });
-  } catch (err) {
-    res.status(500).json({ success: false, message: err.message });
-  }
-};

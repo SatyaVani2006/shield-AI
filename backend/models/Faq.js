@@ -19,6 +19,7 @@ const faqSchema = new mongoose.Schema(
     },
     keywords: [{ type: String, trim: true, lowercase: true }],
     language: { type: String, default: 'en' },
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   },
   { timestamps: true }
 );
